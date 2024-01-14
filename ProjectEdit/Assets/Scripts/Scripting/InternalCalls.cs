@@ -58,9 +58,9 @@ namespace ProjectEdit.Scripting
         {
             var value = new float3
             (
-                (float)(double)vector["x"],
-                (float)(double)vector["y"],
-                (float)(double)vector["z"]
+                (float)vector.Get("x").Number,
+                (float)vector.Get("y").Number,
+                (float)vector.Get("z").Number
             );
 
             var transform = EntityManager.GetComponentData<LocalTransform>(entity);
@@ -87,10 +87,10 @@ namespace ProjectEdit.Scripting
         {
             var value = new quaternion
             (
-                (float)(double)vector["x"],
-                (float)(double)vector["y"],
-                (float)(double)vector["z"],
-                (float)(double)vector["w"]
+                (float)vector.Get("x").Number,
+                (float)vector.Get("y").Number,
+                (float)vector.Get("z").Number,
+                (float)vector.Get("w").Number
             );
 
             var transform = EntityManager.GetComponentData<LocalTransform>(entity);
@@ -119,10 +119,10 @@ namespace ProjectEdit.Scripting
         {
             var value = new Color
             (
-                (float)(double)vector[1],
-                (float)(double)vector[2],
-                (float)(double)vector[3],
-                (float)(double)vector[4]
+                (float)vector.Get(1).Number,
+                (float)vector.Get(2).Number,
+                (float)vector.Get(3).Number,
+                (float)vector.Get(4).Number
             );
 
             EntityManager.GetComponentObject<SpriteRendererComponent>(entity).Color = value;

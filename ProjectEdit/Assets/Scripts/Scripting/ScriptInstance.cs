@@ -16,8 +16,8 @@ namespace ProjectEdit.Scripting
         {
             m_ScriptHandle = scriptHandle;
 
-            m_StartFunction = m_ScriptHandle.Globals.Get("Start").Function;
-            m_UpdateFunction = m_ScriptHandle.Globals.Get("Update").Function;
+            m_StartFunction = m_ScriptHandle.Globals.Get("start").Function;
+            m_UpdateFunction = m_ScriptHandle.Globals.Get("update").Function;
         }
 
         public void CallStart() => m_StartFunction?.Call();

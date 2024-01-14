@@ -42,9 +42,9 @@ namespace ProjectEdit.Scripting
         {
             float ts = SystemAPI.Time.DeltaTime;
 
-            var ecb = new EntityCommandBuffer(Allocator.TempJob);
+            var ecb = new EntityCommandBuffer(Allocator.Temp);
             
-            foreach ((RefRO<ScriptComponent> script, Entity entity)
+            foreach (var (script, entity)
                      in SystemAPI.Query<RefRO<ScriptComponent>>()
                          .WithNone<ScriptInstance>()
                          .WithEntityAccess()
@@ -86,15 +86,8 @@ namespace ProjectEdit.Scripting
             
             var scriptInstance = new ScriptInstance();
             scriptInstance.Init(script);
-            
-            DynValue export = script.Globals.Get("export");
-            if (export.IsNotNil())
-            {
-                foreach (TablePair pair in export.Table.Pairs)
-                    Debug.Log($"{pair.Key}:{pair.Value}");
-            }
-
             scriptInstance.CallStart();
+            
             return scriptInstance;
         }
 
